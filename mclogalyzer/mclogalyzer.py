@@ -31,17 +31,17 @@ import jinja2
 
 REGEX_IP = "(\d+)\.(\d+)\.(\d+)\.(\d+)"
 
-REGEX_LOGIN_USERNAME = re.compile("\[Server thread\/INFO\]: ([^]]+)\[")
-REGEX_LOGOUT_USERNAME = re.compile("\[Server thread\/INFO\]: ([^ ]+) lost connection")
+REGEX_LOGIN_USERNAME = re.compile("INFO\]: ([^]]+)\[")
+REGEX_LOGOUT_USERNAME = re.compile("INFO\]: ([^ ]+) lost connection")
 REGEX_LOGOUT_USERNAME2 = re.compile(
-    "\[Server thread\/INFO\]:.*GameProfile.*name='?([^ ,']+)'?.* lost connection")
-REGEX_KICK_USERNAME = re.compile("\[INFO\] CONSOLE: Kicked player ([^ ]*)")
-REGEX_ACHIEVEMENT = re.compile("\[Server thread\/INFO\]: ([^ ]+) has just earned the achievement \[(.*)\]")
+    "INFO\]:.*GameProfile.*name='?([^ ,']+)'?.* lost connection")
+REGEX_KICK_USERNAME = re.compile("INFO\] CONSOLE: Kicked player ([^ ]*)")
+REGEX_ACHIEVEMENT = re.compile("INFO\]: ([^ ]+) has just earned the achievement \[(.*)\]")
 
 # regular expression to get the username of a chat message
 # you need to change this if you have special chat prefixes or stuff like that
 # this regex works with chat messages of the format: <prefix username> chat message
-REGEX_CHAT_USERNAME = re.compile("\[Server thread\/INFO\]: <([^>]* )?([^ ]*)>")
+REGEX_CHAT_USERNAME = re.compile("INFO\]: <([^>]* )?([^ ]*)>")
 
 DEATH_MESSAGES = (
     "was squashed by.*",
@@ -81,7 +81,7 @@ DEATH_MESSAGES = (
 
 REGEX_DEATH_MESSAGES = set()
 for message in DEATH_MESSAGES:
-    REGEX_DEATH_MESSAGES.add(re.compile("\Server thread\/INFO\]: ([^ ]+) (" + message + ")"))
+    REGEX_DEATH_MESSAGES.add(re.compile("INFO\]: ([^ ]+) (" + message + ")"))
 
 # Will have to update this when number of achievements change.
 # Got this value from http://minecraft.gamepedia.com/Achievements
